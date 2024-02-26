@@ -1,5 +1,6 @@
 import 'package:emailsenderfront/consumers/email_consumer.dart';
 import 'package:emailsenderfront/models/email_model.dart';
+import 'package:emailsenderfront/views/details/email_details.dart';
 import 'package:emailsenderfront/views/form/email_form.dart';
 import 'package:flutter/material.dart';
 
@@ -81,6 +82,9 @@ class _EmailListState extends State<EmailList> {
                         ),
                       ),
                       child: ListTile(
+                        onTap: () {
+                          navigateToEmailDetails(snapshot.data![index]);
+                        },
                         // leading: Icon(
                         //   Icons.email,
                         //   color: snapshot.data![index].status.color,
@@ -143,6 +147,18 @@ class _EmailListState extends State<EmailList> {
       MaterialPageRoute<Widget>(
         builder: (BuildContext context) {
           return const EmailForm();
+        },
+      ),
+    );
+
+    setState(() {});
+  }
+
+  Future<void> navigateToEmailDetails(Email email) async {
+    await Navigator.of(context).push(
+      MaterialPageRoute<Widget>(
+        builder: (BuildContext context) {
+          return EmailDetail(email: email);
         },
       ),
     );

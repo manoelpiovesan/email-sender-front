@@ -31,49 +31,66 @@ class _EmailFormState extends State<EmailForm> {
           ],
         ),
       ),
-      body: Form(
-        key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.all(14),
-          child: Column(
-            children: <Widget>[
-              TextFormField(
-                onSaved: (String? value) => _email.email = value!,
-                decoration: const InputDecoration(
-                  labelText: 'Para',
-                  hintText: 'Email do destinatário',
-                ),
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                onSaved: (String? value) => _email.subject = value!,
-                decoration: const InputDecoration(
-                  labelText: 'Assunto',
-                  hintText: 'Assunto do email',
-                ),
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                onSaved: (String? value) => _email.message = value!,
-                decoration: const InputDecoration(
-                  labelText: 'Mensagem',
-                  hintText: 'Corpo do email',
-                ),
-                maxLines: 5,
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
-                    _emailConsumer.sendEmail(_email);
+      body: Padding(
+        padding: const EdgeInsets.all(14),
+        child: Card(
+          child: Form(
+            key: _formKey,
+            child: Padding(
+              padding: const EdgeInsets.all(14),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const Text(
+                    'Novo Email',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    onSaved: (String? value) => _email.email = value!,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Para',
+                      hintText: 'Email do destinatário',
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    onSaved: (String? value) => _email.subject = value!,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Assunto',
+                      hintText: 'Assunto do email',
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    onSaved: (String? value) => _email.message = value!,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Mensagem',
+                      hintText: 'Corpo do email',
+                    ),
+                    maxLines: 5,
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
+                        _emailConsumer.sendEmail(_email);
 
-                    Navigator.of(context).pop();
-                  }
-                },
-                child: const Text('Enviar'),
+                        Navigator.of(context).pop();
+                      }
+                    },
+                    child: const Text('Enviar'),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
