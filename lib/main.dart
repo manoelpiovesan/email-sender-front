@@ -7,11 +7,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await getWindowInfo().then((PlatformWindow window) {
     if (window.screen != null) {
-      setWindowMinSize(const Size(700, 800));
+      setWindowMinSize(const Size(800, 800));
       setWindowFrame(
         Rect.fromCenter(
           center: window.screen!.visibleFrame.center,
-          width: 600,
+          width: 800,
           height: 800,
         ),
       );

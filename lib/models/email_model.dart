@@ -10,6 +10,10 @@ class Email {
   String message = '';
   DateTime? createdAt;
   EmailStatus status = EmailStatus.PENDING;
+  ///
+  ///
+  ///
+  Email();
 
   ///
   ///
@@ -36,7 +40,7 @@ class Email {
     map['email'] = email;
     map['subject'] = subject;
     map['message'] = message;
-    map['status'] = status;
+    map['status'] = status.toString();
 
     return map;
   }

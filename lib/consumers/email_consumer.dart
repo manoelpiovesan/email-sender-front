@@ -23,4 +23,19 @@ class EmailConsumer {
 
     return emails;
   }
+
+  ///
+  ///
+  ///
+  Future<Email> sendEmail(Email email) async {
+    final Response response = await post(
+      Uri.parse(<String>[Config.API_URL, 'email'].join('/')),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: json.encode(email.toMap()),
+    );
+
+    return Email.fromJson(json.decode(response.body));
+  }
 }
