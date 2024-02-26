@@ -1,10 +1,15 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 
+///
+///
+///
 enum EmailStatus {
-  SENT("Enviado", Colors.green),
-  ERROR("Erro", Colors.red),
-  PENDING("Pendente", Colors.blue),
-  CANCELED("Cancelado", Colors.red);
+  SENT('Enviado', Colors.green),
+  ERROR('Erro', Colors.red),
+  PENDING('Pendente', Colors.blue),
+  CANCELED('Cancelado', Colors.red);
 
   final String name;
   final Color color;
@@ -33,13 +38,13 @@ enum EmailStatus {
   ///
   static EmailStatus fromString(String name) {
     switch (name) {
-      case "SENT":
+      case 'SENT':
         return EmailStatus.SENT;
-      case "ERROR":
+      case 'ERROR':
         return EmailStatus.ERROR;
-      case "PENDING":
+      case 'PENDING':
         return EmailStatus.PENDING;
-      case "CANCELED":
+      case 'CANCELED':
         return EmailStatus.CANCELED;
       default:
         return EmailStatus.PENDING;

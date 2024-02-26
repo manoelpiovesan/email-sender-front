@@ -1,7 +1,9 @@
 import 'package:emailsenderfront/views/homepage.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 
