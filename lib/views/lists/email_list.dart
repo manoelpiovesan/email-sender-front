@@ -25,20 +25,60 @@ class _EmailListState extends State<EmailList> {
           return ListView.builder(
             itemCount: snapshot.data!.length,
             itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                leading: Icon(
-                  Icons.email,
-                  color: snapshot.data![index].status.color,
+              return DecoratedBox(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Colors.grey.shade300,
+                    ),
+                  ),
                 ),
-                title: Text(snapshot.data![index].email),
-                subtitle: Row(
-                  children: <Widget>[
-                    Text(snapshot.data![index].createdAt.toString()),
-                    const SizedBox(width: 10),
-                    Text(snapshot.data![index].subject),
-                  ],
+                child: ListTile(
+                  // leading: Icon(
+                  //   Icons.email,
+                  //   color: snapshot.data![index].status.color,
+                  // ),
+                  title: Row(
+                    children: <Widget>[
+                      Text(snapshot.data![index].message),
+                      const SizedBox(width: 6),
+                      const Icon(
+                        Icons.arrow_forward,
+                        size: 12,
+                      ),
+                      const SizedBox(width: 6),
+                      Text(
+                        snapshot.data![index].email,
+                        style: TextStyle(
+                            color: Colors.grey.shade600, fontSize: 12),
+                      ),
+                    ],
+                  ),
+                  subtitle: Row(
+                    children: <Widget>[
+                      Text('${snapshot.data![index].createdAt!.day}'
+                          '/${snapshot.data![index].createdAt!.month}'
+                          '/${snapshot.data![index].createdAt!.year}'),
+                      const SizedBox(width: 10),
+                      Text(snapshot.data![index].subject),
+                    ],
+                  ),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      snapshot.data![index].status.getIcon(),
+                      const SizedBox(width: 6),
+                      Text(
+                        snapshot.data![index].status.name,
+                        style: TextStyle(
+                          color: snapshot.data![index].status.color,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                trailing: Text(snapshot.data![index].status.name),
               );
             },
           );

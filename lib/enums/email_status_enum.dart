@@ -6,18 +6,19 @@ import 'package:flutter/material.dart';
 ///
 ///
 enum EmailStatus {
-  SENT('Enviado', Colors.green),
-  ERROR('Erro', Colors.red),
-  PENDING('Pendente', Colors.blue),
-  CANCELED('Cancelado', Colors.red);
+  SENT('Enviado', Colors.green, Icons.check),
+  ERROR('Erro', Colors.red, Icons.error),
+  PENDING('Pendente', Colors.blue, Icons.watch_later),
+  CANCELED('Cancelado', Colors.red, Icons.cancel);
 
   final String name;
   final Color color;
+  final IconData iconData;
 
   ///
   ///
   ///
-  const EmailStatus(this.name, this.color);
+  const EmailStatus(this.name, this.color, this.iconData);
 
   ///
   ///
@@ -31,6 +32,13 @@ enum EmailStatus {
   ///
   Color getColor() {
     return color;
+  }
+
+  ///
+  ///
+  ///
+  Widget getIcon() {
+    return Icon(iconData, color: color);
   }
 
   ///
